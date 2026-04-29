@@ -1,0 +1,267 @@
+/* ================= GLOBAL ================= */
+body{
+  background:#f4f4f4;
+  font-family:Arial, sans-serif;
+  margin:0;
+  padding:0;
+}
+
+/* ================= NAVBAR ================= */
+.custom-nav{
+  background:#ff4d4d;
+  padding:12px;
+}
+
+.navbar-brand{
+  font-size:22px;
+}
+
+.nav-link{
+  color:white !important;
+  margin:10px;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+.nav-link:hover{
+  text-decoration:underline;
+}
+
+/* ================= HERO ================= */
+.hero{
+  background:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1600&q=80');
+  background-size:cover;
+  background-position:center;
+  padding:100px 20px;
+  text-align:center;
+  color:white;
+}
+
+.hero h1{
+  font-size:42px;
+  font-weight:bold;
+}
+
+.hero p{
+  font-size:18px;
+}
+
+/* ================= CATEGORY ================= */
+.cat{
+  background:white;
+  padding:15px;
+  border-radius:10px;
+  cursor:pointer;
+  transition:0.3s;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
+  font-weight:bold;
+}
+
+.cat:hover{
+  background:#ff4d4d;
+  color:white;
+}
+
+/* ================= RECIPE CARD ================= */
+.recipe-card{
+  background:white;
+  border-radius:15px;
+  overflow:hidden;
+  transition:0.4s;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.recipe-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 10px 25px rgba(255,77,77,0.4);
+}
+
+/* IMAGE FIX (IMPORTANT) */
+.recipe-card img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  display:block;
+}
+
+/* TEXT AREA */
+.recipe-card .p-3{
+  background:linear-gradient(135deg, #fff, #ffe6e6);
+}
+
+/* TITLE */
+.recipe-card h5{
+  font-weight:bold;
+  color:#222;
+}
+
+/* BUTTON FIX */
+.btn-custom{
+  display:block;
+  background:linear-gradient(135deg, #ff4d4d, #ff1a1a);
+  color:white;
+  border:none;
+  border-radius:10px;
+  padding:10px;
+  font-weight:bold;
+  text-align:center;
+  text-decoration:none;
+}
+
+.btn-custom:hover{
+  background:black;
+  color:white;
+}
+
+/* ================= GRID FIX ================= */
+/* ensures cards properly show */
+.recipe-item{
+  display:block;
+}
+
+/* ================= FOOTER ================= */
+.footer{
+  background:#222;
+  color:white;
+  text-align:center;
+  padding:25px;
+  margin-top:40px;
+}
+
+/* ================= CONTENT PAGE ================= */
+.content{
+  padding:20px;
+  background:white;
+  margin:20px auto;
+  border-radius:15px;
+  max-width:900px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+  .hero{
+    padding:70px 15px;
+  }
+
+  .hero h1{
+    font-size:28px;
+  }
+}
+
+/* 🌙 DARK MODE BASE */
+body.dark{
+  background:#0b0b0f;
+  color:#ffffff;
+  transition:0.4s ease-in-out;
+}
+
+/* 🔥 NAVBAR GLOW */
+body.dark .custom-nav{
+  background:#000;
+  box-shadow:0 0 15px #ff4d4d;
+}
+
+/* 🍽️ CARDS GLOW */
+body.dark .recipe-card{
+  background:#141420;
+  color:white;
+  box-shadow:0 0 15px rgba(255,77,77,0.4);
+  border:1px solid rgba(255,77,77,0.3);
+}
+
+body.dark .recipe-card:hover{
+  box-shadow:0 0 25px #ff4d4d;
+}
+
+/* 🧾 CARD TEXT */
+body.dark .recipe-card .p-3{
+  background:#1a1a2a;
+}
+
+/* 🔘 BUTTON GLOW */
+body.dark .btn-custom{
+  background:linear-gradient(135deg, #ff4d4d, #ff1a1a);
+  box-shadow:0 0 10px #ff4d4d;
+}
+
+body.dark .btn-custom:hover{
+  box-shadow:0 0 25px #ff4d4d;
+}
+
+/* 📂 CATEGORY GLOW */
+body.dark .cat{
+  background:#141420;
+  color:white;
+  border:1px solid rgba(255,77,77,0.3);
+  box-shadow:0 0 10px rgba(255,77,77,0.2);
+}
+
+body.dark .cat:hover{
+  background:#ff4d4d;
+  box-shadow:0 0 20px #ff4d4d;
+}
+
+/* 🔍 INPUT GLOW */
+body.dark input{
+  background:#141420;
+  color:white;
+  border:1px solid #ff4d4d;
+  box-shadow:0 0 10px rgba(255,77,77,0.3);
+}
+
+/* 🦶 FOOTER GLOW */
+body.dark .footer{
+  background:#000;
+  box-shadow:0 0 20px #ff4d4d;
+}
+
+/* ✨ HERO GLOW TEXT */
+body.dark .hero h1{
+  text-shadow:0 0 10px #ff4d4d;
+}
+
+body.dark .hero p{
+  text-shadow:0 0 5px #ff4d4d;
+}
+
+/* 📱 BOTTOM NAV BAR (APP STYLE) */
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#ff4d4d;
+  display:flex;
+  justify-content:space-around;
+  padding:10px 0;
+  box-shadow:0 -2px 15px rgba(0,0,0,0.3);
+  z-index:999;
+}
+
+.bottom-nav a{
+  color:white;
+  text-decoration:none;
+  font-size:14px;
+  text-align:center;
+  font-weight:bold;
+}
+
+/* prevent content hide behind bottom nav */
+body{
+  padding-bottom:70px;
+}
+
+/* 📱 MOBILE RESPONSIVE GRID FIX */
+@media(max-width:768px){
+  .hero{
+    padding:80px 15px;
+  }
+
+  .hero h1{
+    font-size:28px;
+  }
+
+  .recipe-card img{
+    height:180px;
+  }
+}

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FoodHub Recipes</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav class="navbar navbar-expand-lg navbar-dark custom-nav">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">🍲 FoodHub</a>
+
+    <div>
+      <a class="nav-link d-inline" href="index.html">Home</a>
+      <a class="nav-link d-inline" href="about.html">About</a>
+      <a class="nav-link d-inline" href="contact.html">Contact</a>
+
+      <!-- DARK MODE BUTTON -->
+<button onclick="toggleDark()" class="btn btn-light ms-3">
+  🌙
+</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>🍽️ Find Delicious Recipes</h1>
+  <p>Search, Filter & Explore Recipes 😋</p>
+
+  <!-- 🔍 LIVE SEARCH -->
+  <div class="container mt-4">
+    <input type="text" id="searchInput" class="form-control"
+      placeholder="🔍 Search recipes... (biryani, cake, pasta)">
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<div class="container my-4 text-center">
+  <h3>🔥 Categories</h3>
+
+  <div class="row mt-3 g-3">
+    <div class="col-md-3">
+      <div class="cat" onclick="filterCategory('all')">All</div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="cat" onclick="filterCategory('desi')">🍛 Desi</div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="cat" onclick="filterCategory('fast')">🍔 Fast Food</div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="cat" onclick="filterCategory('dessert')">🍰 Dessert</div>
+    </div>
+  </div>
+</div>
+
+<!-- RECIPES -->
+<div class="container my-5">
+  <div class="row g-4" id="recipeContainer">
+
+    <!-- STATIC CARDS -->
+
+    <div class="col-md-4 recipe-item desi" data-name="biryani">
+      <div class="recipe-card">
+        <img src="/images/biryani.jpg">
+        <div class="p-3">
+          <h5>Chicken Biryani 🍗</h5>
+          <a href="recipe1.html" class="btn btn-custom w-100 mt-2">View Recipe</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 recipe-item fast" data-name="burger">
+      <div class="recipe-card">
+        <img src="https://images.unsplash.com/photo-1550547660-d9450f859349">
+        <div class="p-3">
+          <h5>Burger 🍔</h5>
+          <a href="recipe4.html" class="btn btn-custom w-100 mt-2">View Recipe</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 recipe-item dessert" data-name="cake">
+      <div class="recipe-card">
+        <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c">
+        <div class="p-3">
+          <h5>Chocolate Cake 🍰</h5>
+          <a href="recipe8.html" class="btn btn-custom w-100 mt-2">View Recipe</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- API RECIPES -->
+<div class="container my-5">
+  <h3 class="text-center">🌐 Online Recipes</h3>
+  <div class="row g-4" id="apiRecipes"></div>
+</div>
+
+<!-- 📱 MOBILE BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="index.html">🏠<br>Home</a>
+  <a href="#">🔍<br>Search</a>
+  <a href="about.html">ℹ️<br>About</a>
+  <a href="contact.html">📞<br>Contact </a>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>🍲 FoodHub | Delicious Recipes</p>
+  <p>📧 khurramabdullah91@gmail.com</p>
+  <p>© 2026 All Rights Reserved</p>
+</div>
+
+<!-- ================= JS ================= -->
+
+<script>
+
+/* 🔍 LIVE SEARCH */
+document.getElementById("searchInput").addEventListener("keyup", function(){
+  let value = this.value.toLowerCase();
+  let items = document.querySelectorAll(".recipe-item");
+
+  items.forEach(item => {
+    let name = item.getAttribute("data-name");
+
+    if(name.includes(value)){
+      item.style.display = "block";
+    }else{
+      item.style.display = "none";
+    }
+  });
+});
+
+
+/* 📂 CATEGORY FILTER */
+function filterCategory(type){
+  let items = document.querySelectorAll(".recipe-item");
+
+  items.forEach(item => {
+    if(type === "all" || item.classList.contains(type)){
+      item.style.display = "block";
+    }else{
+      item.style.display = "none";
+    }
+  });
+}
+
+/* LOAD SAVED MODE */
+if(localStorage.getItem("theme") === "dark"){
+  document.body.classList.add("dark");
+}
+
+/* TOGGLE FUNCTION */
+function toggleDark(){
+  document.body.classList.toggle("dark");
+
+  if(document.body.classList.contains("dark")){
+    localStorage.setItem("theme","dark");
+  }else{
+    localStorage.setItem("theme","light");
+  }
+}
+
+/* 🌐 API RECIPES (TheMealDB) */
+fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=chicken")
+.then(res => res.json())
+.then(data => {
+
+  let container = document.getElementById("apiRecipes");
+
+  data.meals.slice(0,6).forEach(meal => {
+
+    let card = `
+      <div class="col-md-4">
+        <div class="recipe-card">
+          <img src="${meal.strMealThumb}">
+          <div class="p-3">
+            <h5>${meal.strMeal}</h5>
+            <a href="${meal.strYoutube}" target="_blank" class="btn btn-custom w-100 mt-2">
+              ▶ Watch Recipe
+            </a>
+          </div>
+        </div>
+      </div>
+    `;
+
+    container.innerHTML += card;
+
+  });
+
+});
+
+</script>
+
+</body>
+</html>
+
+
+
+foodhub-recipes.netlify.app

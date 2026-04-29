@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Fries</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="custom-nav">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+
+<!-- DARK MODE BUTTON -->
+<button onclick="toggleDark()" class="btn btn-light ms-3">
+  🌙
+</button>
+</nav>
+
+<h1>🍟 Fries</h1>
+
+<img src="/images/fries.jfif" style="width:80%;display:block;margin:auto;border-radius:15px;">
+
+<div class="content">
+
+<h2>🧾 Ingredients</h2>
+<ul>
+<li>Potatoes – 3 large</li>
+<li>Oil – for frying</li>
+<li>Salt – 1 tsp</li>
+</ul>
+
+<h2>👨‍🍳 Steps</h2>
+<p>
+1. Cut potatoes 🍟<br>
+2. Fry in oil 🔥<br>
+3. Add salt 🧂<br>
+4. Serve crispy 😋
+</p>
+
+<h2>💡 Tips</h2>
+<p>Soak potatoes in water for extra crispiness 🧊</p>
+
+</div>
+
+<div class="footer">🍲 FoodHub © 2026</div>
+
+<script>
+
+/* Load saved theme */
+if(localStorage.getItem("theme") === "dark"){
+  document.body.classList.add("dark");
+}
+
+/* Toggle */
+function toggleDark(){
+  document.body.classList.toggle("dark");
+
+  if(document.body.classList.contains("dark")){
+    localStorage.setItem("theme","dark");
+  }else{
+    localStorage.setItem("theme","light");
+  }
+}
+
+</script>
+
+</body>
+</html>
